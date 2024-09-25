@@ -9,6 +9,7 @@
 <li>Checkout Modal: Easy payment process.</li>  
 <li>Responsive Design: Works on both desktop and mobile.</li>
 </ul>
+
 <h2>Technologies</h2>
 <ul>
 <li>HTML5</li>
