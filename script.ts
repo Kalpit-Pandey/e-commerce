@@ -59,7 +59,7 @@ const menuItems: string[] = [
   "BLAZER",
   "CRATER",
   "HIPPIE",
-  "GOLDSTAR"
+  "GOLDSTAR",
 ];
 
 menuItems.forEach((text) => {
@@ -132,7 +132,7 @@ sliderWrapper.appendChild(
   createSliderItem("./img/hippie.png", "HIPPIE", "$126")
 );
 sliderWrapper.appendChild(
-    createSliderItem("./img/goldstar.png","GOLDSTAR","$12")
+  createSliderItem("./img/goldstar.png", "GOLDSTAR", "$12")
 );
 
 const features = document.createElement("div");
@@ -619,7 +619,7 @@ interface Product {
   title: string;
   price: number;
   colors: Color[];
-  description?:string;
+  description?: string;
 }
 
 const productsList: Product[] = [
@@ -699,30 +699,45 @@ const productsList: Product[] = [
     ],
   },
   {
-    id:6,
-    title:"Goldstar",
-    price:12,
-    colors:[
+    id: 6,
+    title: "Goldstar",
+    price: 12,
+    colors: [
       {
-        code:"white",
-        img:"/img/goldstar.png"
-      }
+        code: "white",
+        img: "/img/goldstar.png",
+      },
     ],
-    description:"Step into comfort, durability, and iconic Nepali style with Goldstar Shoes – the footwear trusted for generations across the country. Whether you're navigating the busy streets of Kathmandu, trekking hillside trails, or walking to school or work, Goldstar shoes deliver unmatched reliability and everyday comfort."
-  }
+    description:
+      "Step into comfort, durability, and iconic Nepali style with Goldstar Shoes – the footwear trusted for generations across the country. Whether you're navigating the busy streets of Kathmandu, trekking hillside trails, or walking to school or work, Goldstar shoes deliver unmatched reliability and everyday comfort.",
+  },
 ];
 
-const wrapperLogic = document.querySelector(".sliderWrapper")as HTMLElement;
-const menuItemsLogic = document.querySelectorAll(".menuItem")as NodeListOf<HTMLElement>;
+const wrapperLogic = document.querySelector(".sliderWrapper") as HTMLElement;
+const menuItemsLogic = document.querySelectorAll(
+  ".menuItem"
+) as NodeListOf<HTMLElement>;
 
 let chosenProduct = productsList[0];
-const currentProductImg = document.querySelector(".productImg") as HTMLImageElement;
-const currentProductTitle = document.querySelector(".productTitle") as HTMLElement;
-const currentProductPrice = document.querySelector(".productPrice") as HTMLElement;
-const currentProductColors = document.querySelectorAll(".color") as NodeListOf<HTMLElement>;
-const currentProductSizes = document.querySelectorAll(".size") as NodeListOf<HTMLElement>;
+const currentProductImg = document.querySelector(
+  ".productImg"
+) as HTMLImageElement;
+const currentProductTitle = document.querySelector(
+  ".productTitle"
+) as HTMLElement;
+const currentProductPrice = document.querySelector(
+  ".productPrice"
+) as HTMLElement;
+const currentProductColors = document.querySelectorAll(
+  ".color"
+) as NodeListOf<HTMLElement>;
+const currentProductSizes = document.querySelectorAll(
+  ".size"
+) as NodeListOf<HTMLElement>;
 
-const currentProductDesc=document.querySelector(".productDesc")as HTMLElement;
+const currentProductDesc = document.querySelector(
+  ".productDesc"
+) as HTMLElement;
 
 menuItemsLogic.forEach((item, index) => {
   item.addEventListener("click", () => {
@@ -733,13 +748,14 @@ menuItemsLogic.forEach((item, index) => {
     chosenProduct = productsList[index];
 
     //default description
-   
-    const defaultDesc = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum est eius consectetur reprehenderit quam, unde qui illum, rem explicabo eum sed quae omnis optio consequuntur. Commodi sunt fugit quod. Doloremque.";
+
+    const defaultDesc =
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum est eius consectetur reprehenderit quam, unde qui illum, rem explicabo eum sed quae omnis optio consequuntur. Commodi sunt fugit quod. Doloremque.";
     //change texts of currentProduct
     currentProductTitle.textContent = chosenProduct.title;
     currentProductPrice.textContent = "$" + chosenProduct.price;
     currentProductImg.src = chosenProduct.colors[0].img;
-    currentProductDesc.textContent=chosenProduct.description||defaultDesc;
+    currentProductDesc.textContent = chosenProduct.description || defaultDesc;
 
     // assign new colors
     currentProductColors.forEach((color, index) => {
@@ -765,7 +781,9 @@ currentProductSizes.forEach((size, index) => {
   });
 });
 
-const productButtonLogic = document.querySelector(".productButton") as HTMLElement;
+const productButtonLogic = document.querySelector(
+  ".productButton"
+) as HTMLElement;
 const paymentLogic = document.querySelector(".payment") as HTMLElement;
 const closeLogic = document.querySelector(".close") as HTMLElement;
 
@@ -777,3 +795,8 @@ closeLogic.addEventListener("click", () => {
   payment.style.display = "none";
 });
 
+window.addEventListener("click", (e) => {
+  if (payment.style.display === "flex" && e.target !== productButtonLogic && !payment.contains(e.target as Node)) {
+    payment.style.display = "none";
+  }
+});

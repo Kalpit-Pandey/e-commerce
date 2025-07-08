@@ -45,7 +45,7 @@ var menuItems = [
     "BLAZER",
     "CRATER",
     "HIPPIE",
-    "GOLDSTAR"
+    "GOLDSTAR",
 ];
 menuItems.forEach(function (text) {
     var menuItem = document.createElement("h3");
@@ -536,11 +536,11 @@ var productsList = [
         colors: [
             {
                 code: "white",
-                img: "/img/goldstar.png"
-            }
+                img: "/img/goldstar.png",
+            },
         ],
-        description: "Step into comfort, durability, and iconic Nepali style with Goldstar Shoes – the footwear trusted for generations across the country. Whether you're navigating the busy streets of Kathmandu, trekking hillside trails, or walking to school or work, Goldstar shoes deliver unmatched reliability and everyday comfort."
-    }
+        description: "Step into comfort, durability, and iconic Nepali style with Goldstar Shoes – the footwear trusted for generations across the country. Whether you're navigating the busy streets of Kathmandu, trekking hillside trails, or walking to school or work, Goldstar shoes deliver unmatched reliability and everyday comfort.",
+    },
 ];
 var wrapperLogic = document.querySelector(".sliderWrapper");
 var menuItemsLogic = document.querySelectorAll(".menuItem");
@@ -593,4 +593,9 @@ productButtonLogic.addEventListener("click", function () {
 });
 closeLogic.addEventListener("click", function () {
     payment.style.display = "none";
+});
+window.addEventListener("click", function (e) {
+    if (payment.style.display === "flex" && e.target !== productButtonLogic && !payment.contains(e.target)) {
+        payment.style.display = "none";
+    }
 });
