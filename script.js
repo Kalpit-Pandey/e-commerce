@@ -1,3 +1,4 @@
+import("./index.js");
 //dom elements
 var main = document.getElementById("main");
 var nav = document.createElement("nav");
@@ -38,23 +39,10 @@ navTop.appendChild(navItem3);
 nav.appendChild(navTop);
 //navBottom
 var navBottom = document.createElement("div");
-navBottom.className = "navBottom";
-var menuItems = [
-    "AIR FORCE",
-    "JORDAN",
-    "BLAZER",
-    "CRATER",
-    "HIPPIE",
-    "GOLDSTAR",
-];
-menuItems.forEach(function (text) {
-    var menuItem = document.createElement("h3");
-    menuItem.className = "menuItem";
-    menuItem.textContent = text;
-    navBottom.appendChild(menuItem);
-});
+navBottom.id = "navBottom";
 nav.appendChild(navBottom);
 main.appendChild(nav);
+
 var slider = document.createElement("div");
 slider.className = "slider";
 main.appendChild(slider);
@@ -62,62 +50,98 @@ var sliderWrapper = document.createElement("div");
 sliderWrapper.className = "sliderWrapper";
 slider.appendChild(sliderWrapper);
 function createSliderItem(imgUrl, Name, Price) {
-    var sliderItem = document.createElement("div");
-    sliderItem.className = "sliderItem";
-    var sliderImage = document.createElement("img");
-    sliderImage.className = "sliderImage";
-    sliderImage.src = imgUrl;
-    sliderItem.appendChild(sliderImage);
-    var sliderBg = document.createElement("div");
-    sliderBg.className = "sliderBg";
-    sliderItem.appendChild(sliderBg);
-    var sliderTitle = document.createElement("h1");
-    sliderTitle.className = "sliderTitle";
-    sliderTitle.innerHTML = "".concat(Name, "<br> NEW <br> SEASON");
-    sliderItem.appendChild(sliderTitle);
-    var sliderPrice = document.createElement("h2");
-    sliderPrice.className = "sliderPrice";
-    sliderPrice.textContent = Price;
-    sliderItem.appendChild(sliderPrice);
-    var a = document.createElement("a");
-    a.href = "#product";
-    var buyButton = document.createElement("button");
-    buyButton.className = "buyButton";
-    buyButton.textContent = "BUY NOW";
-    a.appendChild(buyButton);
-    sliderItem.appendChild(a);
-    return sliderItem;
+  var sliderItem = document.createElement("div");
+  sliderItem.className = "sliderItem";
+  var sliderImage = document.createElement("img");
+  sliderImage.className = "sliderImage";
+  sliderImage.src = imgUrl;
+  sliderItem.appendChild(sliderImage);
+  var sliderBg = document.createElement("div");
+  sliderBg.className = "sliderBg";
+  sliderItem.appendChild(sliderBg);
+  var sliderTitle = document.createElement("h1");
+  sliderTitle.className = "sliderTitle";
+  sliderTitle.innerHTML = "".concat(Name, "<br> NEW <br> SEASON");
+  sliderItem.appendChild(sliderTitle);
+  var sliderPrice = document.createElement("h2");
+  sliderPrice.className = "sliderPrice";
+  sliderPrice.textContent = Price;
+  sliderItem.appendChild(sliderPrice);
+  var a = document.createElement("a");
+  a.href = "#product";
+  var buyButton = document.createElement("button");
+  buyButton.className = "buyButton";
+  buyButton.textContent = "BUY NOW";
+  a.appendChild(buyButton);
+  sliderItem.appendChild(a);
+  return sliderItem;
 }
-sliderWrapper.appendChild(createSliderItem("./img/air.png", "AIR FORCE", "$129"));
-sliderWrapper.appendChild(createSliderItem("./img/jordan.png", "JORDAN", "$133"));
-sliderWrapper.appendChild(createSliderItem("./img/blazer.png", "BLAZER", "$134"));
-sliderWrapper.appendChild(createSliderItem("./img/crater.png", "CRATER", "$140"));
-sliderWrapper.appendChild(createSliderItem("./img/hippie.png", "HIPPIE", "$126"));
-sliderWrapper.appendChild(createSliderItem("./img/goldstar.png", "GOLDSTAR", "$12"));
+sliderWrapper.appendChild(
+  createSliderItem("./img/air.png", "AIR FORCE", "$129")
+);
+sliderWrapper.appendChild(
+  createSliderItem("./img/jordan.png", "JORDAN", "$133")
+);
+sliderWrapper.appendChild(
+  createSliderItem("./img/blazer.png", "BLAZER", "$134")
+);
+sliderWrapper.appendChild(
+  createSliderItem("./img/crater.png", "CRATER", "$140")
+);
+sliderWrapper.appendChild(
+  createSliderItem("./img/hippie.png", "HIPPIE", "$126")
+);
+sliderWrapper.appendChild(
+  createSliderItem("./img/goldstar.png", "GOLDSTAR", "$12")
+);
 var features = document.createElement("div");
 features.className = "features";
 main.appendChild(features);
 function createFeature(imgUrl, title, desc) {
-    var feature = document.createElement("div");
-    feature.className = "feature";
-    var featureImg = document.createElement("img");
-    featureImg.className = "featureImg";
-    featureImg.src = imgUrl;
-    feature.appendChild(featureImg);
-    var featureTitle = document.createElement("span");
-    featureTitle.className = "featureTitle";
-    featureTitle.textContent = title;
-    feature.appendChild(featureTitle);
-    var featureDesc = document.createElement("span");
-    featureDesc.className = "featureDesc";
-    featureDesc.textContent = desc;
-    feature.appendChild(featureDesc);
-    return feature;
+  var feature = document.createElement("div");
+  feature.className = "feature";
+  var featureImg = document.createElement("img");
+  featureImg.className = "featureImg";
+  featureImg.src = imgUrl;
+  feature.appendChild(featureImg);
+  var featureTitle = document.createElement("span");
+  featureTitle.className = "featureTitle";
+  featureTitle.textContent = title;
+  feature.appendChild(featureTitle);
+  var featureDesc = document.createElement("span");
+  featureDesc.className = "featureDesc";
+  featureDesc.textContent = desc;
+  feature.appendChild(featureDesc);
+  return feature;
 }
-features.appendChild(createFeature("./img/shipping.png", "FREE SHIPPING", "Free worldwide shipping on all orders."));
-features.appendChild(createFeature("./img/return.png", "30 DAYS RETURN", "No question return and easy refund in 14 days."));
-features.appendChild(createFeature("./img/gift.png", "GIFT CARDS", "Buy gift cards and use coupon codes easily."));
-features.appendChild(createFeature("./img/contact.png", "CONTACT US", "Keep in touch via email and support system."));
+features.appendChild(
+  createFeature(
+    "./img/shipping.png",
+    "FREE SHIPPING",
+    "Free worldwide shipping on all orders."
+  )
+);
+features.appendChild(
+  createFeature(
+    "./img/return.png",
+    "30 DAYS RETURN",
+    "No question return and easy refund in 14 days."
+  )
+);
+features.appendChild(
+  createFeature(
+    "./img/gift.png",
+    "GIFT CARDS",
+    "Buy gift cards and use coupon codes easily."
+  )
+);
+features.appendChild(
+  createFeature(
+    "./img/contact.png",
+    "CONTACT US",
+    "Keep in touch via email and support system."
+  )
+);
 var product = document.createElement("div");
 product.className = "product";
 product.id = "product";
@@ -141,7 +165,7 @@ productDetails.appendChild(productPrice);
 var productDesc = document.createElement("p");
 productDesc.className = "productDesc";
 productDesc.textContent =
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum est eius consectetur reprehenderit quam, unde qui illum, rem explicabo eum sed quae omnis optio consequuntur. Commodi sunt fugit quod. Doloremque.";
+  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum est eius consectetur reprehenderit quam, unde qui illum, rem explicabo eum sed quae omnis optio consequuntur. Commodi sunt fugit quod. Doloremque.";
 productDetails.appendChild(productDesc);
 var colors = document.createElement("div");
 colors.className = "colors";
@@ -266,7 +290,7 @@ galleryItem1.appendChild(galleryTitle1);
 var galleryImg1 = document.createElement("img");
 galleryImg1.className = "galleryImg";
 galleryImg1.src =
-    "https://images.pexels.com/photos/9295809/pexels-photo-9295809.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
+  "https://images.pexels.com/photos/9295809/pexels-photo-9295809.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 galleryItem1.appendChild(galleryImg1);
 //gallery item 2
 var galleryItem2 = document.createElement("div");
@@ -275,7 +299,7 @@ gallery.appendChild(galleryItem2);
 var galleryImg2 = document.createElement("img");
 galleryImg2.className = "galleryImg";
 galleryImg2.src =
-    "https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
+  "https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 galleryItem2.appendChild(galleryImg2);
 var galleryTitle2 = document.createElement("h1");
 galleryTitle2.className = "galleryTitle";
@@ -292,7 +316,7 @@ galleryItem3.appendChild(galleryTitle3);
 var galleryImg3 = document.createElement("img");
 galleryImg3.className = "galleryImg";
 galleryImg3.src =
-    "https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
+  "https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 galleryItem3.appendChild(galleryImg3);
 //new season
 var newSeason = document.createElement("div");
@@ -305,7 +329,7 @@ newSeason.appendChild(nsItem1);
 var nsImg1 = document.createElement("img");
 nsImg1.className = "nsImg";
 nsImg1.src =
-    "https://images.pexels.com/photos/4753986/pexels-photo-4753986.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
+  "https://images.pexels.com/photos/4753986/pexels-photo-4753986.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 nsItem1.appendChild(nsImg1);
 //nsItem2
 var nsItem2 = document.createElement("div");
@@ -337,7 +361,7 @@ newSeason.appendChild(nsItem3);
 var nsImg3 = document.createElement("img");
 nsImg3.className = "nsImg";
 nsImg3.src =
-    "https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
+  "https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 nsItem3.appendChild(nsImg3);
 //footer
 var footer = document.createElement("footer");
@@ -359,10 +383,10 @@ fList1.className = "fList";
 footerMenu1.appendChild(fList1);
 var fListItems1 = ["Company", "Contact", "Careers", "Affiliates", "Stores"];
 fListItems1.forEach(function (element) {
-    var fListItem1 = document.createElement("li");
-    fListItem1.className = "fListItem";
-    fListItem1.textContent = element;
-    fList1.appendChild(fListItem1);
+  var fListItem1 = document.createElement("li");
+  fListItem1.className = "fListItem";
+  fListItem1.textContent = element;
+  fList1.appendChild(fListItem1);
 });
 //footer menu2
 var footerMenu2 = document.createElement("div");
@@ -377,10 +401,10 @@ fList2.className = "fList";
 footerMenu2.appendChild(fList2);
 var fListItems2 = ["Support", "Refund", "FAQ", "Feedback", "Stories"];
 fListItems2.forEach(function (element) {
-    var fListItem2 = document.createElement("li");
-    fListItem2.className = "fListItem";
-    fListItem2.textContent = element;
-    fList2.appendChild(fListItem2);
+  var fListItem2 = document.createElement("li");
+  fListItem2.className = "fListItem";
+  fListItem2.textContent = element;
+  fList2.appendChild(fListItem2);
 });
 //footer menu3
 var footerMenu3 = document.createElement("div");
@@ -395,10 +419,10 @@ fList3.className = "fList";
 footerMenu3.appendChild(fList3);
 var fListItems3 = ["Air Force", "Air Jordan", "Blazer", "Crater", "Hippie"];
 fListItems3.forEach(function (element) {
-    var fListItem3 = document.createElement("li");
-    fListItem3.className = "fListItem";
-    fListItem3.textContent = element;
-    fList3.appendChild(fListItem3);
+  var fListItem3 = document.createElement("li");
+  fListItem3.className = "fListItem";
+  fListItem3.textContent = element;
+  fList3.appendChild(fListItem3);
 });
 //footer right
 var footerRight = document.createElement("div");
@@ -434,16 +458,16 @@ var fIcons = document.createElement("div");
 fIcons.className = "fIcons";
 footerRightMenu2.appendChild(fIcons);
 var icons = [
-    "./img/facebook.png",
-    "./img/twitter.png",
-    "./img/instagram.png",
-    "./img/whatsapp.png",
+  "./img/facebook.png",
+  "./img/twitter.png",
+  "./img/instagram.png",
+  "./img/whatsapp.png",
 ];
 icons.forEach(function (element) {
-    var fIcon = document.createElement("img");
-    fIcon.className = "fIcon";
-    fIcon.src = element;
-    fIcons.appendChild(fIcon);
+  var fIcon = document.createElement("img");
+  fIcon.className = "fIcon";
+  fIcon.src = element;
+  fIcons.appendChild(fIcon);
 });
 //footer right menu 3
 var footerRightMenu3 = document.createElement("div");
@@ -453,149 +477,113 @@ var copyright = document.createElement("span");
 copyright.className = "copyright";
 copyright.textContent = "@Nike Store. All rights reserved. 2025";
 footerRightMenu3.appendChild(copyright);
-var productsList = [
-    {
-        id: 1,
-        title: "Air Force",
-        price: 119,
-        colors: [
-            {
-                code: "black",
-                img: "./img/air.png",
-            },
-            {
-                code: "darkblue",
-                img: "./img/air2.png",
-            },
-        ],
-    },
-    {
-        id: 2,
-        title: "Air Jordan",
-        price: 149,
-        colors: [
-            {
-                code: "lightgray",
-                img: "./img/jordan.png",
-            },
-            {
-                code: "green",
-                img: "./img/jordan2.png",
-            },
-        ],
-    },
-    {
-        id: 3,
-        title: "Blazer",
-        price: 109,
-        colors: [
-            {
-                code: "lightgray",
-                img: "./img/blazer.png",
-            },
-            {
-                code: "green",
-                img: "./img/blazer2.png",
-            },
-        ],
-    },
-    {
-        id: 4,
-        title: "Crater",
-        price: 129,
-        colors: [
-            {
-                code: "black",
-                img: "./img/crater.png",
-            },
-            {
-                code: "lightgray",
-                img: "./img/crater2.png",
-            },
-        ],
-    },
-    {
-        id: 5,
-        title: "Hippie",
-        price: 99,
-        colors: [
-            {
-                code: "gray",
-                img: "./img/hippie.png",
-            },
-            {
-                code: "black",
-                img: "./img/hippie2.png",
-            },
-        ],
-    },
-    {
-        id: 6,
-        title: "Goldstar",
-        price: 12,
-        colors: [
-            {
-                code: "white",
-                img: "/img/goldstar.png",
-            },
-        ],
-        description: "Step into comfort, durability, and iconic Nepali style with Goldstar Shoes – the footwear trusted for generations across the country. Whether you're navigating the busy streets of Kathmandu, trekking hillside trails, or walking to school or work, Goldstar shoes deliver unmatched reliability and everyday comfort.",
-    },
+export var productsList = [
+  {
+    id: 1,
+    title: "Air Force",
+    price: 119,
+    colors: [
+      {
+        code: "black",
+        img: "./img/air.png",
+      },
+      {
+        code: "darkblue",
+        img: "./img/air2.png",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Air Jordan",
+    price: 149,
+    colors: [
+      {
+        code: "lightgray",
+        img: "./img/jordan.png",
+      },
+      {
+        code: "green",
+        img: "./img/jordan2.png",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Blazer",
+    price: 109,
+    colors: [
+      {
+        code: "lightgray",
+        img: "./img/blazer.png",
+      },
+      {
+        code: "green",
+        img: "./img/blazer2.png",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Crater",
+    price: 129,
+    colors: [
+      {
+        code: "black",
+        img: "./img/crater.png",
+      },
+      {
+        code: "lightgray",
+        img: "./img/crater2.png",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Hippie",
+    price: 99,
+    colors: [
+      {
+        code: "gray",
+        img: "./img/hippie.png",
+      },
+      {
+        code: "black",
+        img: "./img/hippie2.png",
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "Goldstar",
+    price: 12,
+    colors: [
+      {
+        code: "white",
+        img: "/img/goldstar.png",
+      },
+    ],
+    description:
+      "Step into comfort, durability, and iconic Nepali style with Goldstar Shoes – the footwear trusted for generations across the country. Whether you're navigating the busy streets of Kathmandu, trekking hillside trails, or walking to school or work, Goldstar shoes deliver unmatched reliability and everyday comfort.",
+  },
 ];
-var wrapperLogic = document.querySelector(".sliderWrapper");
-var menuItemsLogic = document.querySelectorAll(".menuItem");
-var chosenProduct = productsList[0];
-var currentProductImg = document.querySelector(".productImg");
-var currentProductTitle = document.querySelector(".productTitle");
-var currentProductPrice = document.querySelector(".productPrice");
-var currentProductColors = document.querySelectorAll(".color");
-var currentProductSizes = document.querySelectorAll(".size");
-var currentProductDesc = document.querySelector(".productDesc");
-menuItemsLogic.forEach(function (item, index) {
-    item.addEventListener("click", function () {
-        //change the current slide
-        wrapperLogic.style.transform = "translateX(".concat(-100 * index, "vw)");
-        //change the chosen product
-        chosenProduct = productsList[index];
-        //default description
-        var defaultDesc = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum est eius consectetur reprehenderit quam, unde qui illum, rem explicabo eum sed quae omnis optio consequuntur. Commodi sunt fugit quod. Doloremque.";
-        //change texts of currentProduct
-        currentProductTitle.textContent = chosenProduct.title;
-        currentProductPrice.textContent = "$" + chosenProduct.price;
-        currentProductImg.src = chosenProduct.colors[0].img;
-        currentProductDesc.textContent = chosenProduct.description || defaultDesc;
-        // assign new colors
-        currentProductColors.forEach(function (color, index) {
-            color.style.backgroundColor = chosenProduct.colors[index].code;
-        });
-    });
-});
-currentProductColors.forEach(function (color, index) {
-    color.addEventListener("click", function () {
-        currentProductImg.src = chosenProduct.colors[index].img;
-    });
-});
-currentProductSizes.forEach(function (size, index) {
-    size.addEventListener("click", function () {
-        currentProductSizes.forEach(function (size) {
-            size.style.backgroundColor = "white";
-            size.style.color = "black";
-        });
-        size.style.backgroundColor = "black";
-        size.style.color = "white";
-    });
-});
 var productButtonLogic = document.querySelector(".productButton");
 var paymentLogic = document.querySelector(".payment");
 var closeLogic = document.querySelector(".close");
 productButtonLogic.addEventListener("click", function () {
-    payment.style.display = "flex";
+  payment.style.display = "flex";
 });
 closeLogic.addEventListener("click", function () {
-    payment.style.display = "none";
+  payment.style.display = "none";
 });
 window.addEventListener("click", function (e) {
-    if (payment.style.display === "flex" && e.target !== productButtonLogic && !payment.contains(e.target)) {
-        payment.style.display = "none";
-    }
+  if (
+    payment.style.display === "flex" &&
+    e.target !== productButtonLogic &&
+    !payment.contains(e.target)
+  ) {
+    payment.style.display = "none";
+  }
 });
+
+//react....
