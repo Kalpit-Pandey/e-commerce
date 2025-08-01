@@ -1,15 +1,11 @@
 import React from "react";
+import { useState } from "react";
+import getProducts from '../data/fetch-data';
 
-const menuItems = [
-  "AIR FORCE",
-  "JORDAN",
-  "BLAZER",
-  "CRATER",
-  "HIPPIE",
-  "GOLDSTAR",
-];
+const menuItems =getProducts();
 
-function NavBar() {
+function NavBar({onSelect}) {
+
   return (
     <nav id="nav">
       <div className="navTop">
@@ -38,8 +34,8 @@ function NavBar() {
 
       <div id="navBottom">
         {menuItems.map((item, idx) => (
-          <h3 className="menuItem" key={idx}>
-            {item}
+          <h3 className="menuItem" key={idx} onClick={()=>{onSelect(idx)}}>
+            {item.title}
           </h3>
         ))}
       </div>

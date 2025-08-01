@@ -1,8 +1,9 @@
 import React from "react";
+import getProducts from "../data/fetch-data";
 
 const fListItems1=["Company", "Contact", "Careers", "Affiliates", "Stores"];
 const fListItems2=["Support", "Refund", "FAQ", "Feedback", "Stories"];
-const fListItems3=["Air Force", "Air Jordan", "Blazer", "Crater", "Hippie","Goldstar"];
+const fListItems3=getProducts();
 const icons=["/img/facebook.png","/img/twitter.png","/img/instagram.png","/img/whatsapp.png",]
 
 function Footer() {
@@ -34,7 +35,7 @@ function Footer() {
           <ul className="fList">
             {fListItems3.map((item, idx) => (
               <li className="fListItem" key={idx}>
-                {item}
+                {item.title}
               </li>
             ))}
           </ul>

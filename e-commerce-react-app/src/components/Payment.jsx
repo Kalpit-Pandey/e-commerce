@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Payment() {
+function Payment({onClose}) {
   return (
     <div className='payment'>
         <h1 className="payTitle">Personal Information</h1>
@@ -12,7 +12,7 @@ function Payment() {
         <input type="text" placeholder='Elton St 21 22-145' className='payInput'/>
         <h1 className="payTitle">Card Information</h1>
         <div className="cardIcons">
-            <img src="/img/visa.png" alt="visa" width={40} className="carIcon" />
+            <img src="/img/visa.png" alt="visa" width={40} className="cardIcon" />
             <img src="/img/master.png" alt="master" width={40} className="cardIcon" />
         </div>
         <input type="password"placeholder='Card Number' className="payInput" />
@@ -22,7 +22,7 @@ function Payment() {
             <input type="text" placeholder='dd'className="payInput sm" />
         </div>
         <button className="payButton">Checkout!</button>
-        <span className="close">X</span>
+        <span className="close" onClick={onClose}>X</span>
     </div>
   )
 }
