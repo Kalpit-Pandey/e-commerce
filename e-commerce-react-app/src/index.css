@@ -73,7 +73,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-
+    overflow: hidden;
 }
 .sliderBg{
     width: 750px;
@@ -84,7 +84,12 @@ body {
 }
 .sliderImage{
     z-index:1;
-    width:750px;
+    width:100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 .sliderTitle{
    position: absolute; 

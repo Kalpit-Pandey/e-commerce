@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './index.css'
 import NavBar from './components/Navbar'
 import Slider from './components/Slider'
 import Feature from './components/Feature'
