@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import getProducts from "../data/fetch-data";
+import { ProductContext } from "../context/ProductContext";
 
 const sliderItems = getProducts();
 
-function Slider({selectedIndex}) {
+function Slider() {
+  const {selectedIndex}=useContext(ProductContext)
+
   return (
     <div className="slider">
       <div className="sliderWrapper" style={{transform:`translateX(${-100*selectedIndex}vw)`}}>

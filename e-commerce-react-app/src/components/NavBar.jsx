@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import getProducts from '../data/fetch-data';
+import { ProductContext } from "../context/ProductContext";
 
 const menuItems =getProducts();
 
-function NavBar({onSelect}) {
+function NavBar() {
+  const {setSelectedIndex}=useContext(ProductContext)
+  const onSelect=(selectedIndex)=>{
+    setSelectedIndex(selectedIndex)
+  }
 
   return (
     <nav id="nav">

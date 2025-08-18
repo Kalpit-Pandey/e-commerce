@@ -105,8 +105,8 @@ body {
     position: absolute; 
     top: 10%;
     left: 10%;
-    font: size 60px;
-    font-weight: 300;
+    font-size: 40px;
+    font-weight: 300px;
     text-align: center;
     color: white;
     border: 1px solid grey;
@@ -116,7 +116,7 @@ body {
     position: absolute; 
     top: 50%;
     right: 10%;
-    font: size 60px;
+    font-size: 40px;
     font-weight:  900;
     text-align: center;
     color: white;
@@ -337,6 +337,7 @@ label{
     background-color: black;
     color: white;
     font-weight: 600;
+    font-size: 30px;
     cursor: pointer;
 
 }

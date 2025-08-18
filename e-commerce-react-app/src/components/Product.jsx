@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import getProducts from "../data/fetch-data";
 import Payment from "./Payment";
+import { ProductContext } from "../context/ProductContext";
 
 const productList=getProducts()
-function Product({selectedIndex}) {
+function Product() {
     
-    // const productIndex = 0;
-    const item = productList[selectedIndex];
+    const {selectedIndex}=useContext(ProductContext);
 
-    // if(!item){
-    //   return <div>Loading product....</div>
-    // }
+    const item = productList[selectedIndex];
 
     const [selectedSize,setSelectedSize]=useState(null);
     const [selectedColor,setSelectedColor]=useState(0);

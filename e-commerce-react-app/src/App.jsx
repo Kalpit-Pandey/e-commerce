@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, createContext, useContext } from 'react'
 import './index.css'
 import NavBar from './components/Navbar'
 import Slider from './components/Slider'
@@ -7,23 +7,19 @@ import Product from './components/Product'
 import Gallery from './components/Gallery'
 import NewSeason from './components/NewSeason'
 import Footer from './components/Footer'
+import { ProductIndexProvider } from './context/ProductContext'
 
 function App() {
-  const [selectedIndex,setSelectedIndex]=useState(0);
-
-  function onSelectedIndex(index){
-    setSelectedIndex(index)
-  }
   return (
-    <>
-      <NavBar onSelect={setSelectedIndex}/> 
-      <Slider selectedIndex={selectedIndex}/>
+    <ProductIndexProvider>
+      <NavBar /> 
+      <Slider />
       <Feature />
-      <Product selectedIndex={selectedIndex}/>
+      <Product/>
       <Gallery />
       <NewSeason/>
       <Footer />
-    </>
+    </ProductIndexProvider>
   )
 }
 
