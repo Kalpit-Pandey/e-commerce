@@ -2,16 +2,22 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import getProducts from '../data/fetch-data';
 import { ProductContext } from "../context/ProductContext";
+import Cart from "./Cart";
 
 const menuItems =getProducts();
 
 function NavBar() {
+  const [showCart,setShowCart]=useState(false);
+  // function closeCart(){
+  //   setShowCart(false)
+  // }
   const {setSelectedIndex}=useContext(ProductContext)
   const onSelect=(selectedIndex)=>{
     setSelectedIndex(selectedIndex)
   }
 
   return (
+    <>
     <nav id="nav">
       <div className="navTop">
         <div className="navItem">
@@ -33,7 +39,7 @@ function NavBar() {
           </div>
         </div>
         <div className="navItem">
-          <span className="limitedOffer">Limited Offer!!!</span>
+          <img src="/img/cart.png" alt="cartIcon" width={40} height={40} style={{backgroundColor:"white", cursor:"pointer"}} onClick={()=>setShowCart(!showCart)}/>
         </div>
       </div>
 
@@ -45,6 +51,14 @@ function NavBar() {
         ))}
       </div>
     </nav>
+      {showCart &&(
+        <div className="cart-container">
+          <Cart closeCart={()=>setShowCart(false)}/>
+        </div>
+      )}
+    </>
+
+    
   );
 }
 

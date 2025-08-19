@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import getProducts from "../data/fetch-data";
-import Payment from "./Payment";
+// import Payment from "./Payment";
 import { ProductContext } from "../context/ProductContext";
+import { CartContext } from "../context/CartContext";
 
 const productList=getProducts()
 function Product() {
+    const {addToCart} = useContext(CartContext)
     
     const {selectedIndex}=useContext(ProductContext);
 
@@ -12,7 +14,6 @@ function Product() {
 
     const [selectedSize,setSelectedSize]=useState(null);
     const [selectedColor,setSelectedColor]=useState(0);
-    const [showPayment,setShowPayment]=useState(false);
 
     const size=[42,43,44];
     
@@ -40,10 +41,22 @@ function Product() {
               )))}
 
             </div>
-            <button className="productButton" onClick={()=>setShowPayment(true)}>BUY NOW</button>
+            <button className="productButton" onClick={()=>{
+              if(!selectedSize){
+                alert("Please select a size.");
+                return;
+              }
+              const itemToAdd={
+                ...item,
+                size:selectedSize,
+                color:item.colors[selectedColor].code
+              }
+              addToCart(itemToAdd);
+              {alert(itemToAdd.title+" is added to cart")}
+            }}>Add To Cart</button>
           </div>
         </div>
-        {showPayment && <Payment onClose={()=>setShowPayment(false)}/>}
+        
     </>
   );
 }

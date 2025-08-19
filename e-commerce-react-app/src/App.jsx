@@ -8,9 +8,11 @@ import Gallery from './components/Gallery'
 import NewSeason from './components/NewSeason'
 import Footer from './components/Footer'
 import { ProductIndexProvider } from './context/ProductContext'
+import { CartContextProvider } from './context/CartContext'
 
 function App() {
   return (
+    <CartContextProvider>
     <ProductIndexProvider>
       <NavBar /> 
       <Slider />
@@ -20,6 +22,7 @@ function App() {
       <NewSeason/>
       <Footer />
     </ProductIndexProvider>
+    </CartContextProvider>
   )
 }
 
